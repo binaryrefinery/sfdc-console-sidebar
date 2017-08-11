@@ -1,0 +1,96 @@
+
+/* Override sizes using max/min attributes */
+
+#tabbar-1137-innerCt,
+#tabbar-1137-body,
+#tabbar-1137,
+#tabbar-1137-targetEl {
+    position: absolute;
+    max-width: 240px;
+    min-width: 240px;
+    min-height: 900px;
+}
+
+
+/* Make the tab sidebar full height */
+
+#tabbar-1137 {
+    height: 100%;
+}
+
+
+/* Make the tab container flexboxable */
+
+#tabbar-1137-targetEl {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column;
+}
+
+
+/* Make the tab container a flexbox */
+
+tabbar-1137-innerCt {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*
+ * Hides the scrollbars and some of the cosmetic bits
+ */
+
+#tabbar-1137-strip,
+#tabbar-1137-body>div.x-box-scroller-right,
+#tabbar-1137-body>div.x-box-scroller-left {
+    display: none;
+}
+
+
+/* The tab blocks */
+
+#tabbar-1137-targetEl>.x-box-item {
+    display: block !important;
+    position: static !important;
+    overflow-x: hidden;
+    min-width: 238px;
+    max-width: 238px;
+    flex: none;
+}
+
+
+/*
+ * The text in the tab is a button
+ */
+
+#tabbar-1137-targetEl>div>em>button>span {
+    max-width: 238px;
+    margin-right: 14px;
+}
+
+
+/*
+ * The 'x' link that closes the tab
+ */
+
+#tabbar-1137-targetEl a.x-tab-close-btn {
+    display: block !important;
+    position: static !important;
+    float: right;
+    margin-top: -15px;
+    z-index: 20000;
+}
+
+
+/*
+ * Pushes the main editor panel to the right so it doesn't squash
+ * the tab sidebar.
+ */
+
+#editors-body {
+    display: block !important;
+    position: static !important;
+    float: left;
+    padding-left: 240px;
+    border-bottom: none;
+}
