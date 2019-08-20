@@ -1,9 +1,23 @@
 /* Override sizes using max/min attributes */
+/* Path to tab bar container:
+#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div
+NB each div within this container is a tab
 
-#tabbar-1137-innerCt,
-#tabbar-1137-body,
-#tabbar-1137,
-#tabbar-1137-targetEl {
+document.querySelector('#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div');
+returns: <div id=​"tabbar-1137-targetEl" style=​"position:​absolute;​width:​20000px;​left:​0px;​top:​0px;​height:​1px">​…​</div>​
+
+#tabbar-1137-targetEl => #editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div
+#tabbar-1137-innerCt => #editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body
+#tabbar-1137-body => #editors > div.x-tab-bar > div.x-tab-bar-body
+#tabbar-1137 => #editors > div.x-tab-bar
+
+*/
+
+#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body,
+#editors > div.x-tab-bar > div.x-tab-bar-body,
+#editors > div.x-tab-bar,
+#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div
+{
     position: absolute;
     max-width: 240px;
     min-width: 240px;
@@ -13,14 +27,16 @@
 
 /* Make the tab sidebar full height */
 
-#tabbar-1137 {
+#editors > div.x-tab-bar
+{
     height: 100%;
 }
 
 
 /* Make the tab container flexboxable */
 
-#tabbar-1137-targetEl {
+#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div
+{
     display: -webkit-flex;
     display: flex;
     flex-flow: column;
@@ -29,7 +45,8 @@
 
 /* Make the tab container a flexbox */
 
-tabbar-1137-innerCt {
+#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body
+{
     display: flex;
     flex-direction: column;
 }
@@ -39,16 +56,16 @@ tabbar-1137-innerCt {
  * Hides the scrollbars and some of the cosmetic bits
  */
 
-#tabbar-1137-strip,
-#tabbar-1137-body>div.x-box-scroller-right,
-#tabbar-1137-body>div.x-box-scroller-left {
+div.x-box-inner.x-box-scroller-right,
+div.x-box-inner.x-box-scroller-left {
     display: none;
 }
 
 
 /* The tab blocks */
 
-#tabbar-1137-targetEl>.x-box-item {
+#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div > .x-box-item
+{
     display: block !important;
     position: static !important;
     overflow-x: hidden;
@@ -71,22 +88,31 @@ tabbar-1137-innerCt {
 /*
  * The 'x' link that closes the tab
  */
-
-#tabbar-1137-targetEl a.x-tab-close-btn {
+#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div a.x-tab-close-btn
+ {
     display: block !important;
     position: static !important;
     float: right;
     margin-top: -15px;
-    z-index: 20000;
+    z-index: 5;
 }
 
+/*
+ * The clickable tab selector is a button.
+ * We make it fill the container
+ */
+#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div > em > button
+{
+    width: 100%;
+}
 
 /*
  * Pushes the main editor panel to the right so it doesn't squash
  * the tab sidebar.
  */
 
-#editors-body {
+#editors-body
+{
     display: block !important;
     position: static !important;
     float: left;

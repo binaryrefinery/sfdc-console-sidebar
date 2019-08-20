@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "devconsole-sidebar",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.salesforce.com/_ui/common/apex/debug/ApexCSIPage"
+      ],
+      "css": [
+        "sidebar.css"
+      ],
+      "js": [
+        "sidebar-sorter.js",
+        "update-title.js"
+      ]
+    }
+  ]
+}
