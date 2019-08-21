@@ -1,7 +1,7 @@
 var parentNodeQuery = '#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div';
 function enableSidebarSort() {
     var parentNode = document.querySelector(parentNodeQuery);
-    
+
 
     if (!parentNode) {
         console.log("Waiting for tabs to appear before sorting.");
@@ -25,7 +25,7 @@ function enableSidebarSort() {
     var config = { attributes: false, childList: true, subtree: false };
 
     // Callback function to execute when mutations are observed
-    var callback = function() {
+    var callback = function () {
         sortem()
     };
 
@@ -54,6 +54,8 @@ function sortem() {
     items.sort(function (a, b) {
         var firstFileName = simplifyName(a.textContent);
         var secondFileName = simplifyName(b.textContent);
+
+
         return firstFileName.localeCompare(secondFileName);
     });
 
@@ -74,19 +76,33 @@ function sortem() {
  * @param {string} filename 
  */
 function simplifyName(filename) {
+    var groupApexClasses = false;
+
+    var result = filename;
     var suffixes = {
-        '.cmp': '.0',
-        'Controller.js': '.1',
-        'Helper.js': '.2'
+        '.cmp': '.1',
+        'Controller.js': '.2',
+        'Helper.js': '.3',
+        '.apxc': '.4'
+    }
+
+    // Group Apex Classes together at the top
+    if (groupApexClasses) {
+        if (filename.endsWith('.apxc')) {
+            result = '1' + result;
+        } else {
+            result = '2' + result;
+        }
     }
 
     for (var propertyName in suffixes) {
-        if (filename.endsWith(propertyName)) {
+        if (result.endsWith(propertyName)) {
             // Replace the suffix with the sorting value
-            filename = filename.replace(propertyName, suffixes[propertyName]);
+            result = result.replace(propertyName, suffixes[propertyName]);
+            return result;
         }
     }
-    return filename;
+    return result + '.0';
 }
 
 enableSidebarSort();

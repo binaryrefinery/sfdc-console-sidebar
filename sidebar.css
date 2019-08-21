@@ -75,15 +75,6 @@ div.x-box-inner.x-box-scroller-left {
 }
 
 
-/*
- * The text in the tab is a button
- */
-
-#tabbar-1137-targetEl>div>em>button>span {
-    max-width: 238px;
-    margin-right: 14px;
-}
-
 
 /*
  * The 'x' link that closes the tab
@@ -101,9 +92,12 @@ div.x-box-inner.x-box-scroller-left {
  * The clickable tab selector is a button.
  * We make it fill the container
  */
-#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div > em > button
+#editors > div.x-tab-bar > div.x-tab-bar-body > div.x-horizontal-box-overflow-body > div em > button
 {
-    width: 100%;
+    max-width: 100%;
+    font-weight: 500;
+    font-size: 11px;
+    color: black;
 }
 
 /*
