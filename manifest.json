@@ -1,7 +1,11 @@
 {
-  "manifest_version": 2,
-  "name": "devconsole-sidebar",
+  "manifest_version": 3,
+  "name": "Salesforce Developer Console Sidebar",
+  "description": "Replaces the Tabs in the Salesforce Developer Console with a Convenient Sidebar.",
   "version": "1.0",
+  "icons": {
+    "128": "icon128.png"
+  },
   "content_scripts": [
     {
       "matches": [
@@ -11,8 +15,7 @@
         "sidebar.css"
       ],
       "js": [
-        "sidebar-sorter.js",
-        "update-title.js"
+        "sidebar-sorter.js"
       ]
     }
   ]
